@@ -1,0 +1,87 @@
+.textCont{
+	width: 80%;
+	height: auto;
+	padding: 5px;
+	border: 1px solid #e8e8e8;
+}
+.textCont .titHeader .title{
+	font-size: 18px;
+	text-align: center;
+	font-weight: bold;
+}
+.textCont .des{
+	padding: 0 20px;
+	font-size: 12px;
+}
+.textCont .des .fr span{
+	cursor: pointer;
+}
+.textCont .line {
+	width: 100%;
+	height: 1px;
+	background: #e8e8e8;
+}
+.textCont .content{
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+.textCont .content .courtHierarchy,.textCont .content .type{
+	font-size: 16px;
+	color: #000;
+	text-align: center;
+}
+.textCont .content .text{
+	text-indent: 2em; 
+	margin-top: 10px;
+	min-height: 300px;
+}
+.textDes {
+	width: 20%;
+	position: relative;
+}
+.textDes .step {
+	margin-left: 10px;
+	position: relative;
+}
+.textDes .step .line{
+	width: 1px;
+	height: 280px;
+	background: #ecf1f7;
+	margin-left: 12px;
+}
+.textDes .step span{
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #39a967;
+	position: absolute;
+	left: 8px;
+}
+.textDes .step .circle1{
+	top: 45px;
+}
+.textDes .step .circle2{
+	top: 197px;
+}
+.textDes .message{
+	width: 200px;
+	margin-top: 40px;
+	position: absolute;
+	left: 35px;
+}
+.textDes .message .title{
+	font-size: 16px;
+}
+.textDes .message .left{
+	display: inline-block;
+	width: 70px;
+}
+.textDes .message .right{
+	display: inline-block;
+	width: 126px;
+}
+.textDes .message .legalBasis{
+	margin-top: 10px;
+}

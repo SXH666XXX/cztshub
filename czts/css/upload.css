@@ -1,0 +1,197 @@
+.header{
+    height: 60px;
+    width: 100%;
+    background: #0057a8;
+    line-height: 60px;
+}
+.titname{
+    font-weight: normal;
+    color: #fff;
+    font-size: 16px;
+    margin-left: 30px;
+}
+.searchDiv{
+    height: 130px;
+    background: #054a8b;
+    margin-bottom: 20px;
+}
+.searchDiv .search{
+    position: absolute;
+    left: 50%;
+    margin-left: -325.45px;
+    height: 100%;
+    line-height: 130px;
+}
+.search .select-box{
+    height: 30px;
+    width: 95px;
+    margin-left: 0;
+    background-color: #054A8B;
+    border: none;
+}
+.search01{
+    position: relative;
+}
+.search01 .select {
+    height: 24px;
+    color: #fff;
+    background-color: #054A8B;
+    font-size: 14px;
+    border: none;
+    outline: none;
+}
+
+.search01 .select option {
+    color: #fff;
+    background-color: #054A8B;
+}
+
+.search .input-text {
+    width: 586px;
+    padding: 4px 10px;
+    line-height: 40px;
+    height: 40px;
+    font-size: 13px;
+    border-color: #ccc;
+}
+.radius{
+  border: none;
+  width: 80px;
+  border-radius: 20px;
+  outline:none;
+}
+.searchImg{
+    position: absolute;
+    right: 20px;
+    top: 51px;
+}
+.upload a{
+    color: #fff;
+}
+.upload{
+    margin-right: 30px;
+}
+.main{
+    width: 100%;
+    min-height: 800px;
+    padding: 0 10px;
+}
+.textCont{
+    width: 65%;
+    height: auto;
+    padding: 5px;
+    border: 1px solid #e8e8e8;
+}
+.textCont .titHeader .title{
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+.textCont .des{
+    padding: 0 20px;
+    font-size: 12px;
+}
+.textCont .des .fr span{
+    cursor: pointer;
+}
+.textCont .line {
+    width: 100%;
+    height: 1px;
+    background: #e8e8e8;
+}
+.textCont .content{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.textCont .content .courtHierarchy,.textCont .content .type{
+    font-size: 16px;
+    color: #000;
+    text-align: center;
+}
+.textCont .content .text{
+    text-indent: 2em; 
+    margin-top: 10px;
+    min-height: 300px;
+}
+.textDes {
+    width: 14%;
+    position: relative;
+}
+.textDes .step {
+    margin-left: 10px;
+    position: relative;
+}
+.textDes .step .line{
+    width: 1px;
+    height: 280px;
+    background: #ecf1f7;
+    margin-left: 12px;
+}
+.textDes .step span{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #39a967;
+    position: absolute;
+    left: 8px;
+}
+.textDes .step .circle1{
+    top: 45px;
+}
+.textDes .step .circle2{
+    top: 197px;
+}
+.textDes .message{
+    width: 200px;
+    margin-top: 40px;
+    position: absolute;
+    left: 35px;
+}
+.textDes .message .title{
+    font-size: 16px;
+}
+.textDes .message .left{
+    display: inline-block;
+    width: 70px;
+}
+.textDes .message .right{
+    display: inline-block;
+    width: 126px;
+}
+.textDes .message .legalBasis{
+    margin-top: 10px;
+}
+.send{
+    width: 16%;
+    min-height: 200px;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    overflow-x: hidden;
+    margin-left: 60px;
+}
+.send .sendHead{
+    width: 100%;
+    background: #0057a8;
+    color: #fff;
+    padding: 5px 10px;
+}
+.send ul li{
+    text-align: center;
+    margin-top: 5px;
+}
+.footer{
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+    height: 80px;
+    line-height: 80px;
+    background: #054a8b;
+    position: relative;
+}
+.footer p span{
+    margin-right: 10px;
+}

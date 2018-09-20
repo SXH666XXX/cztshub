@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>创至类案智能推送软件</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/layui.css">
+</head>
+<style>
+  #titles{
+    color: #ffffff;
+    padding-left: 5px;
+    background:   #0057A7;
+  }
+</style>
+<body>
+    <header class="header">
+      <p class="titname">创至类案智能推送软件</p>
+    </header>
+    <section class="main">
+      <div class="searchDiv">
+        <div class="search search01">
+          <span class="select-box radius">
+            <select class="select" size="1" name="demo1" id="selcts">
+              <option value="1" selected>关键词</option>
+              <option value="2">标题</option>
+              <option value="3">案由</option>
+              <option value="4">编号</option>              
+            </select>
+          </span>
+          <input id="allText" style='text-align: center;' class="input-text radius allText" maxlength="32" type="text" autocomplete="off" autofocus placeholder="请输入关键字"/>
+          <img class="searchImg" src="image/search.png" alt="搜索">
+        </div>
+      </div>
+      <div class="sidebar col-md-2" id="sidebar">
+          <ul>
+            <li>
+              <h3><a data-txt="zhal" data-type="zhal" data-href="sentence.html" target="skip" id="titles">文书分类</a></h3></li>
+            <li><a data-txt="zgfl" data-type="zgfl" data-href="judgment.html" class="toggleCss" target="skip">判决书 (<s
+                class='zgfl'
+                id='zgfl'>0</s>)</a>
+            </li>
+            <li><a data-txt="sfjs" data-type="sfjs" data-href="verdict.html" target="skip">裁定书 (<s
+                class='sfjs' id='sfjs'>0</s>)</a>
+            <li><a data-txt="xzfg" data-type="xzfg" data-href="conSta.html" target="skip">调解书 (<s class='xzfg' id='xzfg'>0</s>)</a>
+            </li>
+            <li><a data-txt="bmgz" data-type="bmgz" data-href="decision.html" target="skip">决定书 (<s class='bmgz' id='bmgz'>0</s>)</a>
+            </li>
+            <li><a data-txt="dffggz" data-type="dffggz" data-href="notice.html" target="skip">通知书 (<s
+                class='dffg' id='dffg'>0</s>)</a>
+            </li>
+            <li><a data-txt="dffggz" data-type="dffggz" data-href="other.html" target="skip">其他 (<s
+              class='dffg' id='dffg'>0</s>)</a>
+            </li>
+            <li>
+              <h3 class="zlsyH"><a data-txt="zhal" data-type="zhal" data-href="statistics.html" target="skip" id="titles">统计分析</a></h3></li>
+            <li><a data-txt="zhal" data-type="zhal" data-href="crownCase.html" target="skip">刑事案件 (<s class='alk' id='alk'>532</s>)</a>
+            </li>
+            <li><a data-txt="cpws" data-type="cpws" data-href="civilCase.html" target="skip">民事案件 (<s class='wsk' id='wsk'>431</s>)</a>
+            </li>
+            <li><a data-txt="dffggz" data-type="dffggz" data-href="administrative.html" target="skip">行政案件 (<s
+              class='dffg' id='dffg'>532</s>)</a>
+            </li>
+            <li><a data-txt="dffggz" data-type="dffggz" data-href="compensate.html" target="skip">赔偿案件 (<s
+              class='dffg' id='dffg'>431</s>)</a>
+            </li>
+            <li><a data-txt="dffggz" data-type="dffggz" data-href="execute.html" target="skip">执行案件 (<s
+              class='dffg' id='dffg'>532</s>)</a>
+            </li>
+            <li><a data-txt="dffggz" data-type="dffggz" data-href="else.html" target="skip">其他 (<s
+              class='dffg' id='dffg'>431</s>)</a>
+            </li>
+            <li>
+              <h3 class="zlsyH"><a data-txt="zhal" data-type="zhal" data-href="case.html" target="skip" id="titles">类案推送</a></h3></li>
+          </ul>
+      </div>
+      <div class="count col-md-9" id="section" style="padding: 0;margin: 0;">
+        <!-- <iframe src="legalDatabase.html" frameborder="0" name="skip" id="iframeId"  scrolling="no" frameborder="no" width="100%" height="100%"></iframe>
+        <p>ifram区域</p> -->
+      </div>
+    </section>
+    <footer class="footer">
+        <p>
+          地址：北京市海淀区上地九街软件园 邮编：10001<span></span> 总机：010-00000<span></span> 
+          北京创至计算机科技有限公司 版权所有<span></span>
+        </p>
+        <!-- <p class="bk">京ICP备0000001号</p> -->
+    </footer>
+</body>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/layui.js"></script>
+<script src="js/index.js"></script>
+<script>
+  var liHtmlAry = [];
+  $(function () {
+    autodivheight();
+
+    function autodivheight() { //函数：获取尺寸
+      //获取浏览器窗口高度
+      var winHeight = 0;
+      if (window.innerHeight) {
+        winHeight = window.innerHeight;
+      } else if ((document.body) && (document.body.clientHeight)) {
+        winHeight = document.body.clientHeight;
+      }
+      //通过深入Document内部对body进行检测，获取浏览器窗口高度
+      if (document.documentElement && document.documentElement.clientHeight) {
+        winHeight = document.documentElement.clientHeight;
+      }
+      //DIV高度为浏览器窗口高度-头部高度
+      if(window.innerHeight < 700 ) {  // 如果浏览器高度小于700追加高度
+        document.getElementById("sidebar").style.height = winHeight +175 + "px";
+        document.getElementById("section").style.height = winHeight +175 + "px";
+      } else if(window.innerHeight >700 && window.innerHeight<= 826){ 
+        document.getElementById("sidebar").style.height = winHeight - 200 + "px";
+        document.getElementById("section").style.height = winHeight +50 + "px";
+      }else{
+        document.getElementById("sidebar").style.height = winHeight - 100 + "px";
+        document.getElementById("section").style.height = winHeight - 100 + "px";
+      }
+    }
+
+    window.onresize = autodivheight; //浏览器窗口发生变化时同时变化DIV高度
+  });
+</script>
+</html>

@@ -1,0 +1,29 @@
+.upload a{
+	color: #fff;
+}
+.upload{
+	margin-right: 30px;
+}
+.tableMain{
+	width: 50%;
+	background: #fff;
+	margin: 0 auto;
+	height: 300px;
+}
+.tableMain .newText{
+	border-radius: 5px;
+	padding: 5px;
+	border:1px solid #e0e0e0;
+}
+.table {
+	border: 1px solid #e0e0e0;
+	margin-top: 10px;
+	margin-bottom: 0px !important;
+}
+.table tbody{
+	text-align: center;
+}
+.table .tableHeader{
+	font-weight: bold;
+	background: #e8ebf0 !important
+}

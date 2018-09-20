@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="renderer" content="webkit|ie-comp|ie-stand">
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="js/common/html5shiv.js"></script>
+  <script type="text/javascript" src="js/common/respond-min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/H-ui-ie-13b42c04e5.css"/>
+  <![endif]-->
+  <title>知识索引--上海刑事案件智能辅助办案系统（知识索引）</title>
+  <link rel=icon type="image/png" href="images/logo02.png">
+  <link rel="stylesheet" type="text/css" href="js/common/layui/css/layui.css" media="all"/>
+  <link rel="stylesheet" type="text/css" href="css/H-ui-min-53a5e1ecc3.css"/>
+  <link rel="stylesheet" href="css/icheck-3172945f01.css">
+  <link rel="stylesheet" type="text/css" href="css/laws-ea0e2ecb76.css"/>
+  <link rel="stylesheet" type="text/css" href="css/jquery-mloading-2fdde0b829.css"/>
+  <link rel="stylesheet" type="text/css" href="css/media-915b1b9177.css"/>
+  <style>
+    .iradio-blue {
+      margin: 12px 0 0 0;
+    }
+  </style>
+</head>
+<body>
+<div class="section">
+  <form class="keywords">
+    <input class="btn btn-primary radius" id="clearBtn" type="button" value="清除">
+    <input class="btn btn-primary radius sqSearch" id="sqSearch" type="button" value="收起搜索">
+    <div class="panelContent">
+      <div class="mgb10 cl xljb" style="line-height: 50px;">
+        <label class="form-label">效力级别：</label>
+        <div id="xljbId" class="formControls skin-minimal">
+          <div class="radio-box" data-xljb="-1">
+            <input type="radio" class="allRadio" checked id="xljb-1" name="xljb">
+            <label for="xljb-1">全部</label>
+          </div>
+          <div class="radio-box" data-xljb="41">
+            <input type="radio" id="xljb-2" name="xljb">
+            <label for="xljb-2">部门规章</label>
+          </div>
+          <div class="radio-box" data-xljb="42">
+            <input type="radio" id="xljb-3" name="xljb">
+            <label for="xljb-3">部门规范性文件</label>
+          </div>
+          <div class="radio-box" data-xljb="43">
+            <input type="radio" id="xljb-4" name="xljb">
+            <label for="xljb-4">部门工作文件</label>
+          </div>
+          <div class="radio-box" data-xljb="44">
+            <input type="radio" id="xljb-6" name="xljb">
+            <label for="xljb-6">行政许可批复</label>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <!--<div class="mgb10 cl bbbm" style="line-height: 50px;">
+        <label class="form-label">发布机构：</label>
+        <div id="fbjgId" class="formControls skin-minimal">
+          <div class="radio-box">
+            <input type="radio" class="allRadio" checked id="institution-1" name="institution">
+            <label for="institution-1">全部</label>
+          </div>
+          <div class="radio-box">
+            <input type="radio" id="institution-8" name="institution">
+            <label for="institution-8">全国人民代表大会</label>
+          </div>
+          <div class="radio-box">
+            <input type="radio" id="institution-6" name="institution">
+            <label for="institution-6">全国人大常委会</label>
+          </div>
+          <div class="radio-box">
+            <input type="radio" id="institution-5" name="institution">
+            <label for="institution-5">最高人民法院</label>
+          </div>
+          <div class="radio-box">
+            <input type="radio" id="institution-7" name="institution">
+            <label for="institution-7">最高人民检察院</label>
+          </div>
+          <div class="radio-box">
+            <input type="radio" id="institution-4" name="institution">
+            <label for="institution-4">国务院</label>
+          </div>
+          <div class="radio-box">
+            <input type="radio" id="institution-3" name="institution">
+            <label for="institution-3">国务院各机构</label>
+          </div>
+          <div class="radio-box">
+            <input type="radio" id="institution-2" name="institution">
+            <label for="institution-2">中央其他机构</label>
+          </div>
+        </div>
+      </div>
+      <hr>-->
+      <div class="mgb10 cl ssx" style="line-height: 50px;">
+        <label class="form-label">时效性：</label>
+        <div id="timeId" class="formControls skin-minimal">
+          <div class="radio-box" data-ssxId="-1">
+            <input type="radio" class="allRadio" checked id="time-1" name="time">
+            <label for="time-1">全部</label>
+          </div>
+          <div class="radio-box" data-ssxId="4">
+            <input type="radio" id="time-2" name="time">
+            <label for="time-2">现行有效</label>
+          </div>
+          <div class="radio-box" data-ssxId="5">
+            <input type="radio" id="time-3" name="time">
+            <label for="time-3">尚未生效</label>
+          </div>
+          <div class="radio-box" data-ssxId="3">
+            <input type="radio" id="time-4" name="time">
+            <label for="time-4">已被修改</label>
+          </div>
+          <div class="radio-box" data-ssxId="2">
+            <input type="radio" id="time-6" name="time">
+            <label for="time-6">部分失效</label>
+          </div>
+          <div class="radio-box" data-ssxId="1">
+            <input type="radio" id="time-5" name="time">
+            <label for="time-5">失效</label>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="mgb10 cl fglb" style="line-height: 50px;position: relative">
+        <label class="form-label">法规类别：</label>
+        <input style="width: 20%;" type="input" autocomplete="off" class="input-text radius" id="fglb">
+        <div class="fglbDiv" style="display: none;">
+          <ul>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="mgb10 cl">
+    <div class="formControls skin-minimal">
+      <input class="btn btn-primary radius" style="color:#fff;background-color:#0057A7;" type="button" id="default"
+             value="默认排序 ↓">
+      <input class="btn btn-primary radius" data-num="0" type="button" id="promulgate" value="颁布日期 ↓">
+      <input class="btn btn-primary radius" data-num="0" type="button" id="ssTime" value="实施日期 ↓">
+      <input class="btn btn-primary radius" data-num="0" type="button" id="allHot" value="热度 ↓">
+    </div>
+  </div>
+  <div class="abstract">
+    <ul class="inabstract">
+      <!-- 渲染区域 -->
+    </ul>
+  </div>
+  <div id="demo7"></div>
+</div>
+
+<script type="text/javascript" src="js/common/jquery-min.js"></script>
+<script type="text/javascript" src="js/common/jquery-icheck-min.js"></script>
+<script type="text/javascript" src="js/common/laws.js"></script>
+<script type="text/javascript" src="js/common/layer/layer.js"></script>
+<script type="text/javascript" src="js/common/layui/layui.js"></script>
+<script type="text/javascript" src="js/common/jquery-mloading.js"></script>
+<script type="text/javascript" src="js/common/art-template.js"></script>
+<script type="text/javascript" src="js/rulesLibrary-841a3929ec.js"></script>
+<script type="text/html" id="conTxt">
+  {{ each list val idx }}
+  <li data-flqw_visit_count="{{ val.flqw_visit_count }}" data-flqwjbxxId="{{ val.flqw_flqwjbxx_id}}" class="clearfix">
+    <div class="sxx">
+      {{ if val.flqw_flqwjbxx_yxx === "1" }}
+      <img src="images/sx.png">
+      {{ else if val.flqw_flqwjbxx_yxx === "2" }}
+      <img src="images/bfsx.png">
+      {{ else if val.flqw_flqwjbxx_yxx === "3" }}
+      <img src="images/ybxg.png">
+      {{ else if val.flqw_flqwjbxx_yxx === "5" }}
+      <img src="images/swsx.png">
+      {{ else }}
+      <img src="images/xxyx.png">
+      {{ /if }}
+    </div>
+    <div class="mgb10 cl" data-flqwjbxxId="{{ val.id }}" style="line-height: 24px;">
+      <h2>{{@ val.flqw_flqwjbxx_mc }}</h2>
+      <a href="{{ val.url }}" target="_blank">
+        <p class="p1">{{@ val.flqw_flqwnr_nr }}</p>
+      </a>
+      <p class="p2">
+        <span>{{ val.flqw_flqwjbxx_bbbm }}</span>|
+        {{ if val.flqw_flqwjbxx_yxx === "1" }}
+        <span>失效 </span>|
+        {{ else if val.flqw_flqwjbxx_yxx === "2" }}
+        <span>部分失效</span>|
+        {{ else if val.flqw_flqwjbxx_yxx === "3" }}
+        <span>已被修改</span>|
+        {{ else if val.flqw_flqwjbxx_yxx === "5" }}
+        <span>尚未生效</span>|
+        {{ else }}
+        <span>现行有效</span>|
+        {{ /if }}
+        <span>{{ val.flqw_flqwjbxx_bbrq }}发布</span>|
+        <span>{{ val.flqw_flqwjbxx_ssrq }}实施</span>|
+        <span>点击次数：{{ val.flqw_visit_count }}</span>
+      </p>
+      <!--<a href="{{ val.url }}" target="_blank" style="float: right;" class="more">更多</a>-->
+      <a href="javascript:;" style="float: right;" class="downTxt">下载</a>
+    </div>
+  </li>
+  {{ /each }}
+</script>
+
+<script type="text/html" id="fglbUl">
+  {{ each data val idx }}
+  <li> {{ val.MC }}</li>
+  {{ /each }}
+</script>
+</body>
+</html>
