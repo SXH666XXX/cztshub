@@ -59,28 +59,14 @@
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/layui/layui.all.js"></script>
 		<script src="js/citys.js"></script>
-		<script src="js/crownCase.js"></script>
+		<script src="js/sentence.js"></script>
 		<script type="text/javascript">
 			var reqUrl = sessionStorage.getItem("reqUrl");
-			layui.use(['laypage', 'layer'], function() {
-				var laypage = layui.laypage,
-					layer = layui.layer;
-				//自定义首页、尾页、上一页、下一页文本
-				laypage.render({
-					elem: 'demo3',
-					count: 33,   //总条数
-					limit: 3,    //一页显示多少条
-					first: '首页',
-					last: '尾页',
-					prev: '<em>←</em>',
-					next: '<em>→</em>',
-				});
-			});
 			$.ajax({
 				type:"post",
-				url: reqUrl+"/wsxx/list?pageNum=2&pageSize=5",
+				url: reqUrl+"/wsxx/list?pageNum=1&pageSize=5",
 				success:function(res){
-					console.log(res.list)
+					console.log(res)
 					var data=res,
 						html='';
 					for(var i=0;i<res.list.length;i++){
@@ -107,6 +93,23 @@
 							'</li>'
 					}
 					$('#uls').html(html)
+
+					layui.use(['laypage', 'layer'], function() {
+					var laypage = layui.laypage,
+						layer = layui.layer;
+					//自定义首页、尾页、上一页、下一页文本
+					laypage.render({
+						elem: 'demo3',
+						count: res.total,   //总条数
+						limit: 5,    //一页显示多少条
+						first: '首页',
+						last: '尾页',
+						layout: ['count', 'prev', 'page', 'next', 'skip'],
+						prev: '<em>←</em>',
+						next: '<em>→</em>',
+					});
+			});
+
 				}
 			});
 			// 点击列表进入详情
