@@ -107,6 +107,18 @@
 						layout: ['count', 'prev', 'page', 'next', 'skip'],
 						prev: '<em>←</em>',
 						next: '<em>→</em>',
+						jump:function(obj,first) {
+							if(!first){
+								console.log(res.pageNum)
+								$.ajax({
+									url: reqUrl + '/wsxx/list?pageNum=3&pageSize=5',
+									type: "post",
+									success:function(res) {
+										console.log(res)
+									}
+								})
+							}
+						}
 					});
 			});
 
