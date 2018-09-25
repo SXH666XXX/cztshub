@@ -11,16 +11,16 @@
 	<div class="main clearfix">
 		<div class="textCont fl">
 			<div class="titHeader">
-				<h1 class="title">蒋迎九与中房京贸房地产开发有限公司确认合同无效纠纷二审民事裁定书</h1>
+				<h1 class="title" id="wsbt">蒋迎九与中房京贸房地产开发有限公司确认合同无效纠纷二审民事裁定书</h1>
 			</div>
 			<div class="clearfix des">
 				<p class="fl">
 					<span>发布日期：</span>
-					<span>2015-06-29</span>
+					<span id="fbrq">2015-06-29</span>
 				</p>
 				<p class="fl" style="margin-left: 20px;">
 					<span>浏览：</span>
-					<span>3456次</span>
+					<span id="llcs">3456次</span>
 				</p>
 				<p class="fr" style="margin-bottom: 2px;">
 					<span style="margin-right: 20px;"><img src="image/downImg.png" alt=""></span>
@@ -29,9 +29,9 @@
 			</div>
 			<div class="line"></div>
 			<div class="content">
-				<p class="courtHierarchy">北京市第一中级人民法院</p>
-				<p class="type">民事裁定书</p>
-				<p class="text">上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上
+				<p class="courtHierarchy" id="slfy">北京市第一中级人民法院</p>
+				<p class="type" id="ajlx">民事裁定书</p>
+				<p class="text" id="wsnr">上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上
 诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人上诉人</p>
 			</div>
 		</div>
@@ -47,28 +47,28 @@
 					<p class="title">基本信息</p>
 					<p class="clearfix">
 						<span class="left fl">审理法院：</span>
-						<span class="right fl">北京市第一中级人民法院</span>
+						<span class="right fl" id="slFy">北京市第一中级人民法院</span>
 					</p>
 					<p class="clearfix">
 						<span class="left fl">案件类型：</span>
-						<span class="right fl">民事案件</span>
+						<span class="right fl" id="ajLx">民事案件</span>
 					</p>
 					<p class="clearfix">
 						<span class="left fl">案由：</span>
-						<span class="right fl">确认无效纠纷</span>
+						<span class="right fl" id="wsay">确认无效纠纷</span>
 					</p>
 					<p class="clearfix">
 						<span class="left fl">审理日期：</span>
-						<span class="right fl">2015-06-29</span>
+						<span class="right fl" id="slrq">2015-06-29</span>
 					</p>
 					<p class="clearfix">
 						<span class="left fl">当事人：</span>
-						<span class="right fl">中房房产公司</span>
+						<span class="right fl" id="dsr">中房房产公司</span>
 					</p>
 				</div>
 				<div class="legalBasis">
 					<p class="title">法律依据</p>
-					<p style="width: 174px;">
+					<p style="width: 174px;" id="flyj">
 						最高人民法院适用《中华人民共和国民事诉讼法》的解释第三百三十八章
 					</p>
 				</div>
@@ -82,7 +82,6 @@
   var liHtmlAry = [];
   $(function () {
     autodivheight();
-
     function autodivheight() { //函数：获取尺寸
 		//获取浏览器窗口高度
 		var winHeight = 0;
@@ -96,15 +95,35 @@
 			winHeight = document.documentElement.clientHeight;
 		}
 		//DIV高度为浏览器窗口高度-头部高度
-		if(window.innerHeight < 700) {  // 如果浏览器高度小于700追加高度
-			document.getElementById("sidebar").style.height = winHeight +260 + "px";
-			document.getElementById("section").style.height = winHeight +260 + "px";
-		} else{ 
-			document.getElementById("sidebar").style.height = winHeight + "px";
-			document.getElementById("section").style.height = winHeight + "px";
-		}
+		if(window.innerHeight < 700 ) {  // 如果浏览器高度小于700追加高度
+        document.getElementById("sidebar").style.height = winHeight +175 + "px";
+        document.getElementById("section").style.height = winHeight +175 + "px";
+      } else if(window.innerHeight >700 && window.innerHeight<= 826){ 
+        document.getElementById("sidebar").style.height = winHeight - 200 + "px";
+        document.getElementById("section").style.height = winHeight +50 + "px";
+      }else{
+        // document.getElementById("sidebar").style.height = winHeight - 100 + "px";
+        // document.getElementById("section").style.height = winHeight - 100 + "px";
+      }
     }
-
-    window.onresize = autodivheight; //浏览器窗口发生变化时同时变化DIV高度
+	window.onresize = autodivheight; //浏览器窗口发生变化时同时变化DIV高度
+	var reqUrl = sessionStorage.getItem('reqUrl');
+	var valid = sessionStorage.getItem('valid');
+	$.ajax({
+		url: reqUrl + '/jbxx/detail?wsxxId='+5,
+		success: function(res) {
+			$('#fbrq').html(res.fbrq)
+			$('#llcs').html(res.llcs+'次')
+			$('#slfy').html(res.slfy)
+			$('#slFy').html(res.slfy)
+			$('#ajLx').html(res.ajlx)
+			$('#ajlx').html(res.ajlx)
+			$('#wsnr').html(res.wsnr)
+			$('#wsay').html(res.wsay)
+			$('#slrq').html(res.slrq)
+			$('#dsr').html(res.dsr)
+			$('#flyj').html(res.flyj)
+		}
+	})
   });
 </script>

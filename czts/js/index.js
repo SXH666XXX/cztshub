@@ -1,4 +1,7 @@
 $(function () {
+    var reqUrl = 'http://132.232.191.202:8080'; // 二期接口地址
+    sessionStorage.setItem('reqUrl', reqUrl)
+
     $('.select').change( () => {
       let val = $('.select option:selected').text();
       if(val == '关键词') {
@@ -11,7 +14,19 @@ $(function () {
         $('#allText').attr('placeholder','请输入编号') 
       }
     })
-    
+    $.ajax({
+      url: reqUrl+'/wsxx/wsfl',
+      success: (res) =>{
+        console.log(res)
+       $('#zgfl').html(res['判决书']);
+       $('#sfjs').html(res['裁定书']);
+       $('#xzfg').html(res['调解书']);
+       $('#bmgz').html(res['决定书']);
+       $('#dffg').html(res['通知书']);
+       $('#qita').html(res['其他']);
+      }
+    })
+ 
     var dataHrefTxt = 'sentence.html';
     $('#section').html('<iframe src="' + dataHrefTxt + '" frameborder="0" name="skip" id="iframeId" scrolling="no" frameborder="no" width="100%" height="100%"  ></iframe>'); // 进入页面默认展示
     /* 左侧导航(a标签点击之后改变自身样式) */

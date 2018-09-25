@@ -49,55 +49,12 @@
               <span class="fr"><a href="index.html">更多</a></span>
             </p>
             <table class="table table-striped">
-              <tr class="tableHeader">
+              <tr class="tableHeader" id="newWs">
                 <td>案号</td>
                 <td>裁判文书</td>
                 <td>案件类型</td>
                 <td>案由</td>
                 <td>时间</td>
-              </tr>
-              <tr>
-                <td>（2018）粤行终1424号</td>
-                <td>郑金航与普宁市人民政府...</td>
-                <td>行政</td>
-                <td>郑金航与普宁市人民政府...</td>
-                <td>2016-05-23 08:00</td>
-              </tr>
-              <tr>
-                <td>（2018）粤行终1424号</td>
-                <td>郑金航与普宁市人民政府...</td>
-                <td>行政</td>
-                <td>郑金航与普宁市人民政府...</td>
-                <td>2016-05-23 08:00</td>
-              </tr>
-              <tr>
-                <td>（2018）粤行终1424号</td>
-                <td>郑金航与普宁市人民政府...</td>
-                <td>行政</td>
-                <td>郑金航与普宁市人民政府...</td>
-                <td>2016-05-23 08:00</td>
-              </tr>
-              <tr>
-                <td>（2018）粤行终1424号</td>
-                <td>郑金航与普宁市人民政府...</td>
-                <td>行政</td>
-                <td>郑金航与普宁市人民政府...</td>
-                <td>2016-05-23 08:00</td>
-              </tr>
-              <tr>
-                <td>（2018）粤行终1424号</td>
-                <td>郑金航与普宁市人民政府...</td>
-                <td>行政</td>
-                <td>郑金航与普宁市人民政府...</td>
-                <td>2016-05-23 08:00</td>
-              </tr>
-              <tr>
-                <td>（2018）粤行终1424号</td>
-                <td>郑金航与普宁市人民政府...</td>
-                <td>行政</td>
-                <td>郑金航与普宁市人民政府...</td>
-                <td>2016-05-23 08:00</td>
-              </tr>
             </table>
           </div>
           <div class="newText" style="margin-top: 10px">
@@ -168,6 +125,8 @@
 <script src="js/layui.js"></script>
 <script>
   $(function() {
+    var reqUrl = 'http://132.232.191.202:8080'; // 二期接口地址
+    sessionStorage.setItem('reqUrl', reqUrl)
     $('.select').change( () => {
       let val = $('.select option:selected').text();
       if(val == '关键词') {
@@ -178,6 +137,40 @@
         $('#allText').attr('placeholder','请输入案由')        
       } else{
         $('#allText').attr('placeholder','请输入编号') 
+      }
+    })
+    $.ajax({
+      url: reqUrl+'/wsxx/newList',
+      success: (res) =>{
+        console.log(res)
+        var str = '';
+        for(var i = 0;i<res.length;i++ ){
+          str += '<tr>'+
+                '<td>'+ res[i].ah +'</td>'+
+                '<td>'+ res[i].cply +'</td>'+
+                '<td>'+ res[i].ajlx +'</td>'+
+                '<td>'+ res[i].wsAy +'</td>'+
+                '<td>'+ res[i].createTime +'</td>'+
+                '</tr>'
+        }
+        $('#newWs').after(str);
+      }
+    })
+    $.ajax({
+      url: reqUrl+'/wsxx/newList',
+      success: (res) =>{
+        console.log(res)
+        var str = '';
+        for(var i = 0;i<res.length;i++ ){
+          str += '<tr>'+
+                '<td>'+ res[i].ah +'</td>'+
+                '<td>'+ res[i].cply +'</td>'+
+                '<td>'+ res[i].ajlx +'</td>'+
+                '<td>'+ res[i].wsAy +'</td>'+
+                '<td>'+ res[i].createTime +'</td>'+
+                '</tr>'
+        }
+        $('#newWs').after(str);
       }
     })
   })
