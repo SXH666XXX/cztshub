@@ -110,7 +110,7 @@
 	var reqUrl = sessionStorage.getItem('reqUrl');
 	var valid = sessionStorage.getItem('valid');
 	$.ajax({
-		url: reqUrl + '/jbxx/detail?wsxxId='+5,
+		url: reqUrl + '/jbxx/detail?wsxxId='+valid,
 		success: function(res) {
 			$('#fbrq').html(res.fbrq)
 			$('#llcs').html(res.llcs+'次')
@@ -119,10 +119,11 @@
 			$('#ajLx').html(res.ajlx)
 			$('#ajlx').html(res.ajlx)
 			$('#wsnr').html(res.wsnr)
-			$('#wsay').html(res.wsay)
+			$('#wsay').html(res.ay)
 			$('#slrq').html(res.slrq)
 			$('#dsr').html(res.dsr)
 			$('#flyj').html(res.flyj)
+            $('#wsbt').html(res.wsbt)
 		}
 	})
   });

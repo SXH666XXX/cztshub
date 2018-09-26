@@ -54,7 +54,7 @@
             var data = res,
                 html='';
             for(var i=0;i<res.list.length;i++){
-                html += '<li>' +
+                html += '<li id="lists" data-detailid='+res.list[i].wsId+'>' +
                     '<div class="lis" id="list1" data-txt="zhal" data-type="zhal" data-href="documentDetail.html" target="skip">' +
                     '<input type="text" id="nones" class="nones" value ='+ res.list[i].wsId +' >' +
                     '<button class="labelCriminal">' + res.list[i].ajlx + '</button>' +
@@ -71,7 +71,7 @@
                     '</div>' +
                     '</div>' +
                     '<div class="columnBtn">' +
-                    '<span class="download">' + '<img src="image/downImg.png" alt="下载icon">下载 </span>' +
+                    '<a class="downTxt">' + '<img src="image/downImg.png" alt="下载icon">下载 </a>' +
                     '<span class="tjws" data-type="zhal" data-href="recommend.html" target="skip">' + '<img src="image/moreImg.png" alt="icon损坏"> 推荐文书 </span>' +
                     '</div>' +
                     '</li>'
@@ -102,7 +102,7 @@
                                 success:function(res) {
                                     html = '';
                                     for(var i=0;i<res.list.length;i++){
-                                        html += '<li>' +
+                                        html += '<li id="lists" data-detailid='+res.list[i].wsId+'>' +
                                             '<div class="lis" id="list1" data-txt="zhal" data-type="zhal" data-href="documentDetail.html" target="skip">' +
                                             '<input type="text" id="nones" class="nones" value ='+ res.list[i].wsId +' >' +
                                             '<button class="labelCriminal">' + res.list[i].ajlx + '</button>' +
@@ -119,7 +119,7 @@
                                             '</div>' +
                                             '</div>' +
                                             '<div class="columnBtn">' +
-                                            '<span class="download">' + '<img src="image/downImg.png" alt="下载icon">下载 </span>' +
+                                            '<a class="downTxt">' + '<img src="image/downImg.png" alt="下载icon">下载 </a>' +
                                             '<span class="tjws" data-type="zhal" data-href="recommend.html" target="skip">' + '<img src="image/moreImg.png" alt="icon损坏"> 推荐文书 </span>' +
                                             '</div>' +
                                             '</li>'
@@ -142,6 +142,12 @@
       dataHrefTxt = $(this).attr('data-href'); 
       $('#mains').html('<iframe  src="' + dataHrefTxt + '" data-leftNum="1" frameborder="0" name="skip" id="iframeId   scrolling="no" frameborder="no" width="100%" height="100%" "></iframe>');
     });
+    $('#uls').on('click', 'li a.downTxt', function () {
+        var id = $(this).parent().parent().attr('data-detailid');
+        console.log(id)
+        console.log($(this).parent().parent())
+        window.open(reqUrl + '/wsxx/downloadWs?wsId=' + id );
+        });
 </script>
 </body>
 </html>
