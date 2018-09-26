@@ -26,6 +26,18 @@ $(function () {
        $('#qita').html(res['其他']);
       }
     })
+    $.ajax({
+        url: reqUrl+'/wsxx/ajlx',
+        success: (res) =>{
+        console.log(res)
+        $('#pcaj').html(res['赔偿案件']);
+        $('#zxaj').html(res['执行案件']);
+        $('#alk').html(res['刑事案件']);
+        $('#qt').html(res['其他']);
+        $('#wsk').html(res['民事案件']);
+        $('#xzaj').html(res['行政案件']);
+    }
+    })
  
     var dataHrefTxt = 'sentence.html';
     $('#section').html('<iframe src="' + dataHrefTxt + '" frameborder="0" name="skip" id="iframeId" scrolling="no" frameborder="no" width="100%" height="100%"  ></iframe>'); // 进入页面默认展示

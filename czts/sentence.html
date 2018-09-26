@@ -11,6 +11,9 @@
 			#demo3 {
 				text-align: center;
 			}
+			.nones{
+				display: none;
+			}
 		</style>
 	</head>
 
@@ -28,26 +31,7 @@
 			<div class="tab_content_box">
 				<div class="tab_content tab_content_active">
 					<ul class="uls" id="uls">
-						<li>
-							<div class="lis" id="list1" data-txt="zhal" data-type="zhal" data-href="documentDetail.html" target="skip">
-								<button class="labelCriminal">刑事案件</button>
-								<div class="column">
-									<h6 class="titName"></h6>
-								</div>
-								<div class="column">
-									<p>最高人民法院 （2012）刑监第182-1号 <span>2014-12-19</span></p>
-								</div>
-								<div class="columns">
-									<p class="msg">
-										<b>【裁判理由】</b>本院经审查认为,宋皓通过个人借款、协调有业务关系及无业务关联的房地产开发公司借款及帮助申请贷款等多种途径为贵州新世纪集团房地产开发有限公司开发“世纪佳苑”、“世纪雅苑”两房地产项目提供启动资金、项目运营资金，并承担相应...
-									</p>
-								</div>
-							</div>
-							<div class="columnBtn">
-								<span class="download"><img src="image/downImg.png" alt="下载icon">下载</span>
-								<span class="tjws" data-type="zhal" data-href="recommend.html" target="skip"><img src="image/moreImg.png" alt="icon损坏">推荐文书</span>
-							</div>
-						</li>
+						<!-- 渲染红包书列表 -->
 						
 					</ul>
 					<div id="demo3"></div>
@@ -64,13 +48,15 @@
 			var reqUrl = sessionStorage.getItem("reqUrl");
 			$.ajax({
 				type:"post",
-				url: reqUrl+"/wsxx/list?pageNum=1&pageSize=5",
+				url: reqUrl+"/wsxx/list",
+				data:JSON.stringify({"pageNum":1,"pageSize":5}),
+                contentType: "application/json",
 				success:function(res){
 					console.log(res)
-					var data=res,
+					var data = res,
 						html='';
 					for(var i=0;i<res.list.length;i++){
-						html += '<li>' +
+						html += '<li id="lists" data-detailid='+res.list[i].wsId+'>' +
 							'<div class="lis" id="list1" data-txt="zhal" data-type="zhal" data-href="documentDetail.html" target="skip">' +
 							'<input type="text" id="nones" class="nones" value ='+ res.list[i].wsId +' >' +
 							'<button class="labelCriminal">' + res.list[i].ajlx + '</button>' +
@@ -87,7 +73,7 @@
 							'</div>' +
 							'</div>' +
 							'<div class="columnBtn">' +
-							'<span class="download">' + '<img src="image/downImg.png" alt="下载icon">下载 </span>' +
+							'<a class="downTxt">' + '<img src="image/downImg.png" alt="下载icon">下载 </a>' +
 							'<span class="tjws" data-type="zhal" data-href="recommend.html" target="skip">' + '<img src="image/moreImg.png" alt="icon损坏"> 推荐文书 </span>' +
 							'</div>' +
 							'</li>'
@@ -109,12 +95,39 @@
 						next: '<em>→</em>',
 						jump:function(obj,first) {
 							if(!first){
-								console.log(res.pageNum)
+							    console.log(obj);
 								$.ajax({
-									url: reqUrl + '/wsxx/list?pageNum=3&pageSize=5',
+									url: reqUrl + '/wsxx/list',
+                                    data:JSON.stringify({"pageNum":obj.curr,"pageSize":5}),
+                                    contentType: "application/json",
 									type: "post",
 									success:function(res) {
+										html = '';
 										console.log(res)
+                                        for(var i=0;i<res.list.length;i++){
+                                            html += '<li id="lists" data-detailid='+res.list[i].wsId+'>' +
+                                                '<div class="lis" id="list1" data-txt="zhal" data-type="zhal" data-href="documentDetail.html" target="skip">' +
+                                                '<input type="text" id="nones" class="nones" value ='+ res.list[i].wsId +' >' +
+                                                '<button class="labelCriminal">' + res.list[i].ajlx + '</button>' +
+                                                '<div class="column">' +
+                                                '<h6 class="titName">' + res.list[i].wsBt + '</h6>' +
+                                                '</div>' +
+                                                '<div class="column">' +
+                                                '<p>' + res.list[i].ah + '<span>' + res.list[i].jarq + '</span>' + '</p>' +
+                                                '</div>' +
+                                                '<div class="columns">' +
+                                                '<p class="msg">' +
+                                                '<b>【裁判理由】 </b>' + res.list[i].wsnr +
+                                                '</p>' +
+                                                '</div>' +
+                                                '</div>' +
+                                                '<div class="columnBtn">' +
+                                                '<a class="downTxt">' + '<img src="image/downImg.png" alt="下载icon">下载 </a>' +
+                                                '<span class="tjws" data-type="zhal" data-href="recommend.html" target="skip">' + '<img src="image/moreImg.png" alt="icon损坏"> 推荐文书 </span>' +
+                                                '</div>' +
+                                                '</li>'
+										}
+                                        $('#uls').html(html)
 									}
 								})
 							}
@@ -131,12 +144,16 @@
 				sidebarLeftTxt = thatTxt;
 				dataHrefTxt = $(this).attr('data-href');
 				$('#mains').html('<iframe  src="' + dataHrefTxt + '" data-leftNum="1" frameborder="0" name="skip" id="iframeId   scrolling="no" frameborder="no" width="100%" height="100%" "></iframe>');
-			
 				var val = $(this).find('#nones').val()
     			sessionStorage.setItem('valid', val)
 				alert(val)
 			});
-				
+			$('#uls').on('click', 'li a.downTxt', function () {
+				var id = $(this).parent().parent().attr('data-detailid');
+				console.log(id)
+				console.log($(this).parent().parent())
+				window.open(reqUrl + '/wsxx/downloadWs?wsId=' + id );
+			});
 		</script>
 	</body>
 

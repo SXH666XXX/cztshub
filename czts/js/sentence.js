@@ -1,20 +1,5 @@
 $(function() {
     let iframe ;
-    // layui.use(['laypage', 'layer'], function(){
-    //     var laypage = layui.laypage
-    //     ,layer = layui.layer;
-    //     //自定义首页、尾页、上一页、下一页文本
-    //     laypage.render({
-    //         elem: 'demo3'
-    //         ,count: 33
-    //         ,limit: 3
-    //         ,first: '首页'
-    //         ,last: '尾页'
-    //         ,prev: '<em>←</em>'
-    //         ,next: '<em>→</em>'
-    //     });
-    // });
-    // 点击列表进入详情
     $('.lis').on('click', function () { 
         type = $(this).attr('data-type');
         var thatTxt = $(this).attr('data-txt');    
