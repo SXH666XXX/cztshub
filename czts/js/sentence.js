@@ -22,11 +22,11 @@ $(function () {
     if (val != '法院层级') {
       $.ajax({
         type: 'post',
-        url: reqUrl + '/wsxx/list',
+        url: reqUrl + '/wsxx/list?fycj='+val,
         contentType: "application/json",
-        data: JSON.stringify({ "pageNum": 1, "pageSize": 5, "fycj": val }),
+        data: JSON.stringify({ "pageNum": 2, "pageSize": 5}),
         success: function (res) {
-          alert(val)
+          console.log(res)
           var data = res,
             html = '';
           for (var i = 0; i < res.list.length; i++) {
@@ -68,7 +68,6 @@ $(function () {
               prev: '<em>←</em>',
               next: '<em>→</em>',
               jump: function (obj, first) {
-                console.log(obj)
                 if (!first) {
                   console.log(obj);
                   $.ajax({
