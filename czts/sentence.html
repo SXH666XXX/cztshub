@@ -45,6 +45,7 @@
 	<script src="js/layui/layui.all.js"></script>
 	<script src="js/citys.js"></script>
 	<script src="js/sentence.js"></script>
+	<script src="js/fycj.js"></script>
 	<script type="text/javascript">
 		var reqUrl = sessionStorage.getItem("reqUrl");
 		$.ajax({
@@ -53,7 +54,6 @@
 			data: JSON.stringify({ "pageNum": 1, "pageSize": 5 }),
 			contentType: "application/json",
 			success: function (res) {
-				console.log(res)
 				var data = res,
 					html = '';
 				for (var i = 0; i < res.list.length; i++) {
@@ -147,7 +147,7 @@
 			$('#mains').html('<iframe  src="' + dataHrefTxt + '" data-leftNum="1" frameborder="0" name="skip" id="iframeId   scrolling="no" frameborder="no" width="100%" height="100%" "></iframe>');
 			var val = $(this).find('#nones').val()
 			sessionStorage.setItem('valid', val)
-			alert(val)
+			// alert(val) //查看跳转id
 		});
 		$('#uls').on('click', 'li a.downTxt', function () {
 			var id = $(this).parent().parent().attr('data-detailid');

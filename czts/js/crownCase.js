@@ -1,19 +1,19 @@
-$(function() {
-    let iframe ;
+$(function () {
+    let iframe;
     var reqUrl = sessionStorage.getItem("reqUrl");
     $.ajax({
-        type:"post",
-        url: reqUrl+"/wsxx/list?ajlx=刑事案件",
-        data:JSON.stringify({"pageNum":1,"pageSize":5}),
+        type: "post",
+        url: reqUrl + "/wsxx/list?ajlx=刑事案件",
+        data: JSON.stringify({ "pageNum": 1, "pageSize": 5 }),
         contentType: "application/json",
-        success:function(res){
+        success: function (res) {
             console.log(res)
             var data = res,
-                html='';
-            for(var i=0;i<res.list.length;i++){
-                html += '<li id="lists" data-detailid='+res.list[i].wsId+'>' +
+                html = '';
+            for (var i = 0; i < res.list.length; i++) {
+                html += '<li id="lists" data-detailid=' + res.list[i].wsId + '>' +
                     '<div class="lis" id="list1" data-txt="zhal" data-type="zhal" data-href="documentDetail.html" target="skip">' +
-                    '<input type="text" id="nones" class="nones" value ='+ res.list[i].wsId +' >' +
+                    '<input type="text" id="nones" class="nones" value =' + res.list[i].wsId + ' >' +
                     '<button class="labelCriminal">' + res.list[i].ajlx + '</button>' +
                     '<div class="column">' +
                     '<h6 class="titName">' + res.list[i].wsBt + '</h6>' +
@@ -35,7 +35,7 @@ $(function() {
             }
             $('#uls').html(html)
 
-            layui.use(['laypage', 'layer'], function() {
+            layui.use(['laypage', 'layer'], function () {
                 var laypage = layui.laypage,
                     layer = layui.layer;
                 //自定义首页、尾页、上一页、下一页文本
@@ -48,20 +48,20 @@ $(function() {
                     layout: ['count', 'prev', 'page', 'next', 'skip'],
                     prev: '<em>←</em>',
                     next: '<em>→</em>',
-                    jump:function(obj,first) {
-                        if(!first){
+                    jump: function (obj, first) {
+                        if (!first) {
                             console.log(obj);
                             $.ajax({
                                 url: reqUrl + '/wsxx/list?ajlx=刑事案件',
-                                data:JSON.stringify({"pageNum":obj.curr,"pageSize":5}),
+                                data: JSON.stringify({ "pageNum": obj.curr, "pageSize": 5 }),
                                 contentType: "application/json",
                                 type: "post",
-                                success:function(res) {
+                                success: function (res) {
                                     html = '';
-                                    for(var i=0;i<res.list.length;i++){
-                                        html += '<li id="lists" data-detailid='+res.list[i].wsId+'>' +
+                                    for (var i = 0; i < res.list.length; i++) {
+                                        html += '<li id="lists" data-detailid=' + res.list[i].wsId + '>' +
                                             '<div class="lis" id="list1" data-txt="zhal" data-type="zhal" data-href="documentDetail.html" target="skip">' +
-                                            '<input type="text" id="nones" class="nones" value ='+ res.list[i].wsId +' >' +
+                                            '<input type="text" id="nones" class="nones" value =' + res.list[i].wsId + ' >' +
                                             '<button class="labelCriminal">' + res.list[i].ajlx + '</button>' +
                                             '<div class="column">' +
                                             '<h6 class="titName">' + res.list[i].wsBt + '</h6>' +
@@ -92,25 +92,28 @@ $(function() {
         }
     });
     // 点击列表进入详情
-    $('.lis').on('click', function () { 
+    $('.uls').on('click', '.lis', function () {
         type = $(this).attr('data-type');
-        var thatTxt = $(this).attr('data-txt');    
+        var thatTxt = $(this).attr('data-txt');
         sidebarLeftTxt = thatTxt;
-        dataHrefTxt = $(this).attr('data-href'); 
-        $('#mains').html('<iframe  src="' + dataHrefTxt + '" data-leftNum="1" frameborder="0" name="skip" id="iframeId"  scrolling="no" frameborder="no" width="100%" height="100%"></iframe>');
-      });
-      // 点击进入推荐列表
-      $('.tjws').on('click', function () {
+        dataHrefTxt = $(this).attr('data-href');
+        $('#mains').html('<iframe  src="' + dataHrefTxt + '" data-leftNum="1" frameborder="0" name="skip" id="iframeId   scrolling="no" frameborder="no" width="100%" height="100%" "></iframe>');
+        var val = $(this).find('#nones').val()
+        sessionStorage.setItem('valid', val)
+        // alert(val) //查看跳转id
+    });
+    // 点击进入推荐列表
+    $('.tjws').on('click', function () {
         type = $(this).attr('data-type');
-        var thatTxt = $(this).attr('data-txt');    
+        var thatTxt = $(this).attr('data-txt');
         sidebarLeftTxt = thatTxt;
         dataHrefTxt = $(this).attr('data-href');
         $('#mains').html('<iframe  src="' + dataHrefTxt + '" data-leftNum="1" frameborder="0" name="skip" id="iframeId"  scrolling="no" frameborder="no" width="100%" height="100%"></iframe>');
-     });
-     $('#uls').on('click', 'li a.downTxt', function () { //下载
+    });
+    $('#uls').on('click', 'li a.downTxt', function () { //下载
         var id = $(this).parent().parent().attr('data-detailid');
         console.log(id)
         console.log($(this).parent().parent())
-        window.open(reqUrl + '/wsxx/downloadWs?wsId=' + id );
+        window.open(reqUrl + '/wsxx/downloadWs?wsId=' + id);
     });
 })

@@ -17,7 +17,6 @@ $(function () {
     $.ajax({
       url: reqUrl+'/wsxx/wsfl',
       success: (res) =>{
-        console.log(res)
        $('#zgfl').html(res['判决书']);
        $('#sfjs').html(res['裁定书']);
        $('#xzfg').html(res['调解书']);
@@ -29,7 +28,6 @@ $(function () {
     $.ajax({
         url: reqUrl+'/wsxx/ajlx',
         success: (res) =>{
-        console.log(res)
         $('#pcaj').html(res['赔偿案件']);
         $('#zxaj').html(res['执行案件']);
         $('#alk').html(res['刑事案件']);

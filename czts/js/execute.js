@@ -91,13 +91,16 @@ $(function() {
         }
     });
     // 点击列表进入详情
-    $('.lis').on('click', function () { 
+    $('.uls').on('click', '.lis', function () {
         type = $(this).attr('data-type');
-        var thatTxt = $(this).attr('data-txt');    
+        var thatTxt = $(this).attr('data-txt');
         sidebarLeftTxt = thatTxt;
-        dataHrefTxt = $(this).attr('data-href'); 
-        $('#mains').html('<iframe  src="' + dataHrefTxt + '" data-leftNum="1" frameborder="0" name="skip" id="iframeId"  scrolling="no" frameborder="no" width="100%" height="100%"></iframe>');
-      });
+        dataHrefTxt = $(this).attr('data-href');
+        $('#mains').html('<iframe  src="' + dataHrefTxt + '" data-leftNum="1" frameborder="0" name="skip" id="iframeId   scrolling="no" frameborder="no" width="100%" height="100%" "></iframe>');
+        var val = $(this).find('#nones').val()
+        sessionStorage.setItem('valid', val)
+        // alert(val) //查看跳转id
+    });ƒ
       // 点击进入推荐列表
       $('.tjws').on('click', function () {
         type = $(this).attr('data-type');
